@@ -1,0 +1,16 @@
+{
+  "name": "netodonalds",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "Neto Lanches",
+  "license": "ISC",
+  "description": "Projeto para venda de lanches",
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.0"
+  }
+}
