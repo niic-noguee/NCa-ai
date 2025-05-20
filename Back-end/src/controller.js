@@ -11,4 +11,22 @@ async function getAllFoods(request, reply) {
   reply.json(responseDB);
 }
 
-module.exports = { getAllFoods };
+/* Retorna uma comida pelo ID, como também o seu
+   preço e os seus recheios */
+async function getFoodById(request, reply) {
+  const id = request.params.id;
+
+  const responseFood = await repository.getFoodById(id);
+  const responseFillings = await repository.getFillingsById(id);
+
+  if (responseFood.error) return reply.status(404).json(responseFood.error);
+
+  const response = {
+    food: responseFood,
+    fillings: responseFillings,
+  };
+
+  reply.json(response);
+}
+
+module.exports = { getAllFoods, getFoodById };

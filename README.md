@@ -23,6 +23,11 @@ npm run dev
 
 ## Dev Log
 
+**Aula 02 - 20/05 (terça)**
+
+- [x] Criação da tabela **fillings** e criação da rota /food/:id.
+  - [x] A rota **/food/:id** retorna uma comida identificada pelo id, como também os recheios associados a ela
+
 **Aula 01 - 19/05 (segunda)**
 
 - [x] Criação da base de dados e início do back-end.
