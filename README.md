@@ -23,6 +23,12 @@ npm run dev
 
 ## Dev Log
 
+**Aula 03 - 26/05 (segunda)**
+
+- [x] Criação do início do front-end.
+  - [x] Criação dos arquivos index.html, style.css e script.js
+  - [x] Inclusão da logo do projeto na pasta Front-end/imgs
+
 **Aula 02 - 20/05 (terça)**
 
 - [x] Criação da tabela **fillings** e criação da rota /food/:id.

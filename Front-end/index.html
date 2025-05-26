@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netodonalds</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img width="100" src="./imgs/logo.png" alt="" />
+      <h1>Bem vindo!</h1>
+    </header>
+    <hr />
+    <div class="menu-container">
+      <div class="food-container">
+        Escolha o seu lanche:
+        <input type="radio" id="tapioca" name="food" checked /> Tapioca
+        <input type="radio" id="cuzcuz" name="food" /> Cuzcuz
+      </div>
+      <div class="buyer-container">
+        CPF do comprador: <input type="number" id="cpf" />
+      </div>
+    </div>
+
+    <div class="body-container">
+      <div class="fillings-container">
+        <h2>Escolha o seu recheio</h2>
+        <div class="fillings">
+          <div><input type="checkbox" /> Queijo (R$ 1.50)</div>
+          <div><input type="checkbox" /> Presunto (R$ 0.50)</div>
+          <div><input type="checkbox" /> Nutella (R$ 5.50)</div>
+        </div>
+      </div>
+
+      <div class="price-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
