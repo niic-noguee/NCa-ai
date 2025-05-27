@@ -15,8 +15,8 @@
     <div class="menu-container">
       <div class="food-container">
         Escolha o seu lanche:
-        <input type="radio" id="tapioca" name="food" checked /> Tapioca
-        <input type="radio" id="cuzcuz" name="food" /> Cuzcuz
+        <input onchange="getFood(1)" type="radio" id="tapioca" name="food" checked /> Tapioca
+        <input onchange="getFood(2)" type="radio" id="cuzcuz" name="food" /> Cuzcuz
       </div>
       <div class="buyer-container">
         CPF do comprador: <input type="number" id="cpf" />
@@ -33,7 +33,9 @@
         </div>
       </div>
 
-      <div class="price-container"></div>
+      <div class="price-container">
+        <h2>Preço Total: R$ <span id="price"></span></h2>
+      </div>
     </div>
 
     <script src="script.js"></script>

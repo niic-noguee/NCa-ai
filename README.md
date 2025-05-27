@@ -23,7 +23,14 @@ npm run dev
 
 ## Dev Log
 
-**Aula 03 - 26/05 (segunda)**
+**Aula 04 - 26/05 (segunda-noite)**
+
+- [x] Apromiramento do front-end.
+  - [x] Integração com o Back-end
+  - [x] Leitura dos dados da comida e dos recheios
+  - [x] Instalação do cors no server.js
+
+**Aula 03 - 26/05 (segunda-manhã)**
 
 - [x] Criação do início do front-end.
   - [x] Criação dos arquivos index.html, style.css e script.js
