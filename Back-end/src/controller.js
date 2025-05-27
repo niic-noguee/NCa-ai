@@ -29,4 +29,14 @@ async function getFoodById(request, reply) {
   reply.json(response);
 }
 
-module.exports = { getAllFoods, getFoodById };
+async function setPayment(request, reply) {
+  const payInfo = request.body;
+
+  const responseDB = await repository.setPayment(payInfo);
+
+  if (responseDB.error) return reply.status(404).json(responseDB.error);
+
+  reply.json(responseDB);
+}
+
+module.exports = { getAllFoods, getFoodById, setPayment };

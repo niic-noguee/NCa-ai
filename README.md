@@ -23,6 +23,10 @@ npm run dev
 
 ## Dev Log
 
+**Aula 05 - 27/05 (terça)**
+
+- [x] Criação da rota **/payment** e da tabela payment.
+
 **Aula 04 - 26/05 (segunda-noite)**
 
 - [x] Apromiramento do front-end.

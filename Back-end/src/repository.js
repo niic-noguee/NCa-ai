@@ -35,6 +35,25 @@ class FoodRepository {
       return { error: error.message };
     }
   }
+
+  async setPayment(payInfo) {
+    try {
+      const sql = `insert into payments(id_foods, cpf, pay_date, description, price)
+          values($1, $2, $3, $4, $5)`;
+
+      const response = await this.database.query(sql, [
+        payInfo.id_foods,
+        payInfo.cpf,
+        payInfo.pay_date,
+        payInfo.description,
+        payInfo.price,
+      ]);
+
+      return "Pagamento realizado!";
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
 }
 
 module.exports = FoodRepository;
