@@ -3,17 +3,17 @@ const Controller = require("./controller");
 const cors = require("cors");
 
 const server = express();
-const PORT = 8080;
+const PORT = 3000;
 
-server.use(cors());
+server.use(cors({
+   origin: "http://localhost:8080", 
+   methods: ["GET", "POST"], 
+}));
 server.use(express.json());
 
 server.get("/foods", Controller.getAllFoods);
 server.get("/food/:id", Controller.getFoodById);
 server.post("/payment", Controller.setPayment);
+server.get("/history", Controller.getHistoryByCpf);
 
-/* TODO: Implementar a rota de históricos 
-de pagamentos de um cliente */
-// server.get("/history", Controller.getHistoryByCpf);
-
-server.listen(PORT, () => console.log("Server ON"));
+server.listen(PORT, () => console.log("Servidor escutando 👂"));

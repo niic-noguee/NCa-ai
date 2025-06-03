@@ -1,14 +1,14 @@
 {
-  "name": "netodonalds",
+  "name": "ncdonalds",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch ./src/server.js"
   },
   "keywords": [],
-  "author": "Neto Lanches",
+  "author": "Nicolly S.S. Nogueira",
   "license": "ISC",
-  "description": "Projeto para venda de lanches",
+  "description": "Clone do MCdonalds",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",

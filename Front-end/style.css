@@ -48,3 +48,23 @@ header {
   padding: 20px;
   flex-basis: 50%;
 }
+
+button {
+  transition: background-color 0.3s;
+}
+
+#messages {
+  padding: 15px;
+  text-align: center;
+}
+
+.food-container, .buyer-container {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+input[type="number"], input[type="text"] {
+  padding: 5px;
+  margin-left: 5px;
+}

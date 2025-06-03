@@ -11,15 +11,16 @@ async function getAllFoods(request, reply) {
   reply.json(responseDB);
 }
 
-/* Retorna uma comida pelo ID, como também o seu
-   preço e os seus recheios */
 async function getFoodById(request, reply) {
   const id = request.params.id;
 
   const responseFood = await repository.getFoodById(id);
-  const responseFillings = await repository.getFillingsById(id);
+  
+  if (responseFood.length === 0) {
+    return reply.status(404).json({ error: "Alimento não encontrado" });
+  }
 
-  if (responseFood.error) return reply.status(404).json(responseFood.error);
+  const responseFillings = await repository.getFillingsById(id);
 
   const response = {
     food: responseFood,
@@ -30,13 +31,33 @@ async function getFoodById(request, reply) {
 }
 
 async function setPayment(request, reply) {
-  const payInfo = request.body;
+  try {
+    const requiredFields = ['id_foods', 'cpf', 'description', 'price'];
+    for (const field of requiredFields) {
+      if (!request.body[field]) {
+        return reply.status(400).json({ error: `Campo ${field} é obrigatório` });
+      }
+    }
 
-  const responseDB = await repository.setPayment(payInfo);
+    const responseDB = await repository.setPayment(request.body);
+    return reply.json(responseDB);
+    
+  } catch (error) {
+    console.error("Erro no pagamento:", error);
+    return reply.status(500).json({ error: "Erro ao processar pagamento" });
+  }
+}
+
+async function getHistoryByCpf(request, reply) {
+  const { cpf } = request.query;
+
+  if (!cpf) return reply.status(400).json({ error: "CPF é obrigatório" });
+
+  const responseDB = await repository.getHistoryByCpf(cpf);
 
   if (responseDB.error) return reply.status(404).json(responseDB.error);
 
   reply.json(responseDB);
 }
 
-module.exports = { getAllFoods, getFoodById, setPayment };
+module.exports = { getAllFoods, getFoodById, setPayment, getHistoryByCpf };

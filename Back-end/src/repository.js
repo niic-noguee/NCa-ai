@@ -54,6 +54,17 @@ class FoodRepository {
       return { error: error.message };
     }
   }
+
+  async getHistoryByCpf(cpf) {
+    try {
+      const sql = "SELECT * FROM payments WHERE cpf = $1 ORDER BY pay_date DESC";
+      const responseDB = await this.database.query(sql, [cpf]);
+
+      return responseDB.rows;
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
 }
 
 module.exports = FoodRepository;
