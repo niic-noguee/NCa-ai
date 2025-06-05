@@ -1,9 +1,7 @@
-// Configurações globais
 let currentFoodId = 1;
 let selectedFillings = [];
 const API_BASE_URL = "http://localhost:3000";
 
-// Elementos do DOM
 const fillingsContainer = document.getElementById('fillings-container');
 const selectedItemsContainer = document.getElementById('selected-items');
 const totalPriceElement = document.getElementById('total-price');
@@ -16,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
-// Configurar event listeners
 function setupEventListeners() {
     // Menu mobile
     if (menuToggle && mainNav) {
@@ -43,7 +40,6 @@ function selectFood(foodId, event) {
     currentFoodId = foodId;
     getFood(foodId);
 
-    // Atualizar UI para mostrar seleção
     document.querySelectorAll('.food-card').forEach(card => {
         card.style.border = '2px solid transparent';
         card.style.transform = 'scale(1)';
@@ -54,7 +50,6 @@ function selectFood(foodId, event) {
     selectedCard.style.transform = 'scale(1.02)';
 }
 
-// Obter açaí e recheios do backend
 async function getFood(idFood) {
     try {
         showLoading(true);
@@ -124,7 +119,6 @@ function updateSelectedFillings(checkbox, name, price) {
 function updateOrderSummary() {
     selectedItemsContainer.innerHTML = '';
 
-    // Adicionar açaí base
     const foodCard = document.querySelector(`.food-card:nth-child(${currentFoodId})`);
     if (!foodCard) return;
 
@@ -150,8 +144,6 @@ function updateOrderSummary() {
         `;
         selectedItemsContainer.appendChild(item);
     });
-
-    // Calcular total
     calculateTotal();
 }
 
@@ -174,20 +166,17 @@ async function completePurchase() {
     const cpf = cpfInput.value.trim();
 
     try {
-        // Validações
         if (!cpf) throw new Error("CPF é obrigatório!");
         if (cpf.length < 11) throw new Error("CPF deve ter 11 dígitos");
         if (selectedFillings.length === 0) throw new Error("Selecione pelo menos 1 recheio");
 
         showLoading(true);
 
-        // Preparar dados
         const foodCard = document.querySelector(`.food-card:nth-child(${currentFoodId})`);
         const foodName = foodCard.querySelector('h4').textContent;
         const description = `${foodName} com ${selectedFillings.map(f => f.name).join(", ")}`;
         const totalPrice = parseFloat(totalPriceElement.textContent.replace('R$ ', ''));
 
-        // Enviar para o backend
         const response = await fetch(`${API_BASE_URL}/payment`, {
             method: "POST",
             headers: {
@@ -207,7 +196,6 @@ async function completePurchase() {
             throw new Error(errorData.error || "Erro no servidor");
         }
 
-        // Sucesso
         showMessage("Pedido realizado com sucesso!", 'success');
         resetOrder();
 
@@ -230,16 +218,13 @@ function resetOrder() {
     document.getElementById('cpf-input').value = '';
 }
 
-// Mostrar mensagem
 function showMessage(message, type) {
-    // Remove mensagens existentes
     document.querySelectorAll('.message').forEach(el => el.remove());
     
     const messageElement = document.createElement('div');
     messageElement.className = `message ${type}`;
     messageElement.textContent = message;
 
-    // Adicione antes do footer
     document.querySelector('main').appendChild(messageElement);
 
     setTimeout(() => {
@@ -247,7 +232,6 @@ function showMessage(message, type) {
     }, 3000);
 }
 
-// Mostrar/ocultar loading
 function showLoading(show) {
     const loadingElement = document.getElementById('loading-overlay');
     
